@@ -1,7 +1,7 @@
 Download vechile sales data -> https://github.com/shashank-mishra219/Hive-Class/blob/main/sales_order_data.csv
 load this raw data into my local with sales_order_data.csv
 create database hive_class_b2;
-# create csv table for sales data
+# create internal table  table for sales data
 
 create table sales_order_csv
 (
@@ -31,6 +31,34 @@ row format delimited
 fields terminated by ','
 tblproperties("skip.header.line.count"="1")
 ; 
+#put my csv data file in hdfs
+
+#create internal hive table which will store data in ORC format "sales_order_orc"
+create table sales_order_orc
+(
+ORDERNUMBER int,
+QUANTITYORDERED int,
+PRICEEACH float,
+ORDERLINENUMBER int,
+SALES float,
+STATUS string,
+QTR_ID int,
+MONTH_ID int,
+YEAR_ID int,
+PRODUCTLINE string,
+MSRP int,
+PRODUCTCODE string,
+PHONE string,
+CITY string,
+STATE string,
+POSTALCODE string,
+COUNTRY string,
+TERRITORY string,
+CONTACTLASTNAME string,
+CONTACTFIRSTNAME string,
+DEALSIZE string
+)
+stored as orc;
 
 
 select year_id as year ,sum(sales) from sales_order_csv group by year_id;
