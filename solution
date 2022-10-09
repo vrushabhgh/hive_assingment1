@@ -75,7 +75,7 @@ e.select max(sales),min(sales),country from sales_order_orc group by country;
 
 f.select qtr_id,city,sum(sales) from sales_order_orc group by qtr_id,city;
 
-g.
+g.select month_id,year_id,sum(sales) from sales_order_orc group by month_id,year_id;
 
 
 
